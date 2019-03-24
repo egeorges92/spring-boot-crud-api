@@ -19,7 +19,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString(callSuper=true)
 @EqualsAndHashCode(callSuper=true)
-public class Student extends BasicEntity{
+public class Student extends BasicEntity {
 
 	private String name;
 	private String passportNumber;

@@ -15,19 +15,19 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-public class CrudResource<T extends BasicEntity> {
+public class CrudResourceV2<T extends BasicEntity> {
 
 	@Autowired
-	protected BasicRepository<T> repository;
+	protected BasicService<T> service;
 
 	@GetMapping
 	public ResponseEntity<List<T>> retrieveAll() {
-		return ResponseEntity.ok(repository.findAll());
+		return ResponseEntity.ok(service.retrieveAll());
 	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<T> retrieve(@PathVariable Long id) {
-		Optional<T> entity = repository.findById(id);
+		Optional<T> entity = service.retrieve(id);
 
 		if (entity.isPresent()) {
 			return ResponseEntity.of(entity);
@@ -38,13 +38,13 @@ public class CrudResource<T extends BasicEntity> {
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> delete(@PathVariable long id) {
-		repository.deleteById(id);
+		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 
 	@PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<T> create(@RequestBody T entity) {
-		T savedEntity = repository.save(entity);
+		T savedEntity = service.create(entity);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(savedEntity.getId()).toUri();
 		return ResponseEntity.created(location).build();
@@ -54,7 +54,7 @@ public class CrudResource<T extends BasicEntity> {
 	@PutMapping(path="/{id}", consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> update(@RequestBody T entity, @PathVariable Long id) {
 
-		Optional<T> updatedEntity = repository.update(id, entity);
+		Optional<T> updatedEntity = service.update(id, entity);
 
 		if (updatedEntity.isPresent()) {
 			return ResponseEntity.noContent().build();

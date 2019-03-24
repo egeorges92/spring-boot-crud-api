@@ -29,7 +29,7 @@ import io.restassured.http.ContentType;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
-public class StudentResourceIntegrationTest {
+public class StudentResourceV2IntegrationTest {
 
 	@Autowired
 	private StudentRepository repository;
@@ -37,7 +37,7 @@ public class StudentResourceIntegrationTest {
 	@Value("${local.server.port}")
 	private int serverPort;
 	
-	private static final String RESOURCE_PATH = "/api/v1/students";
+	private static final String RESOURCE_PATH = "/api/v2/students";
 	
 	private Student STUDENT_1 = Student.builder().id(100l).name("Student1").passportNumber("111111").build();
 	private Student STUDENT_2 = Student.builder().id(200l).name("Student2").passportNumber("222222").build();
