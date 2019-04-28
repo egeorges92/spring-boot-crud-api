@@ -1,4 +1,4 @@
-package com.example.crud.student;
+package com.example.student;
 
 import org.springframework.stereotype.Service;
 

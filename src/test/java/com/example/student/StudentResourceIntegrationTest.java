@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.example.crud.student;
+package com.example.student;
 
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -18,6 +18,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import com.example.student.Student;
+import com.example.student.StudentRepository;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;

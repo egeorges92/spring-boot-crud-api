@@ -1,4 +1,4 @@
-package com.example.crud.student;
+package com.example.student;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

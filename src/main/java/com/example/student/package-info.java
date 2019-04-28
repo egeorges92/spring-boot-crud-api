@@ -5,4 +5,4 @@
  * @author egeorges
  *
  */
-package com.example.crud.student;
+package com.example.student;

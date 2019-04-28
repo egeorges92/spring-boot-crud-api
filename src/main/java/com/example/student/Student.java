@@ -1,8 +1,10 @@
-package com.example.crud.student;
+package com.example.student;
+
+import java.util.Date;
 
 import javax.persistence.Entity;
 
-import com.example.crud.BasicEntity;
+import com.example.person.Person;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,17 +21,16 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString(callSuper=true)
 @EqualsAndHashCode(callSuper=true)
-public class Student extends BasicEntity {
+public class Student extends Person {
 
 	private String name;
 	private String passportNumber;
 	
 	@Builder
-	public Student(Long id, String name, String passportNumber) {
-		super(id);
+	public Student(Long id, String firstName, String lastName, String email, Date birthday, String name, String passportNumber) {
+		super(id, firstName, lastName, email, birthday);
 		this.name = name;
 		this.passportNumber = passportNumber;
 	}
-	
 	
 }
